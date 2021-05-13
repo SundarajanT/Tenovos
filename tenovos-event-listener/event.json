@@ -1,0 +1,125 @@
+{
+  "resource": "/tnvs-event-listener",
+  "path": "/tnvs-event-listener",
+  "httpMethod": "POST",
+  "headers": {
+      "Accept-Encoding": "gzip,deflate",
+      "CloudFront-Forwarded-Proto": "https",
+      "CloudFront-Is-Desktop-Viewer": "true",
+      "CloudFront-Is-Mobile-Viewer": "false",
+      "CloudFront-Is-SmartTV-Viewer": "false",
+      "CloudFront-Is-Tablet-Viewer": "false",
+      "CloudFront-Viewer-Country": "US",
+      "Content-Type": "text/plain; charset=UTF-8",
+      "Host": "r67qmv7v4c.execute-api.us-east-1.amazonaws.com",
+      "User-Agent": "Amazon Simple Notification Service Agent",
+      "Via": "1.1 27eb501c8caff149895f88cac34554af.cloudfront.net (CloudFront)",
+      "X-Amz-Cf-Id": "eAONsmbBoKejpk19SYoEao0Dfr3c7vOzy_OjNTWz3LImD-E2-tc9pw==",
+      "x-amz-sns-message-id": "f3bddb99-6429-5f50-ab6c-83a14e40a466",
+      "x-amz-sns-message-type": "Notification",
+      "x-amz-sns-subscription-arn": "arn:aws:sns:us-east-1:702668273362:1591685891187-asm-event-publishing:c62f7ca9-f2bb-45c1-ad4c-2dfe61354341",
+      "x-amz-sns-topic-arn": "arn:aws:sns:us-east-1:702668273362:1591685891187-asm-event-publishing",
+      "X-Amzn-Trace-Id": "Root=1-5fbe2829-47de2d916587c71634700760",
+      "X-Forwarded-For": "72.21.217.218, 70.132.60.72",
+      "X-Forwarded-Port": "443",
+      "X-Forwarded-Proto": "https"
+  },
+  "multiValueHeaders": {
+      "Accept-Encoding": [
+          "gzip,deflate"
+      ],
+      "CloudFront-Forwarded-Proto": [
+          "https"
+      ],
+      "CloudFront-Is-Desktop-Viewer": [
+          "true"
+      ],
+      "CloudFront-Is-Mobile-Viewer": [
+          "false"
+      ],
+      "CloudFront-Is-SmartTV-Viewer": [
+          "false"
+      ],
+      "CloudFront-Is-Tablet-Viewer": [
+          "false"
+      ],
+      "CloudFront-Viewer-Country": [
+          "US"
+      ],
+      "Content-Type": [
+          "text/plain; charset=UTF-8"
+      ],
+      "Host": [
+          "r67qmv7v4c.execute-api.us-east-1.amazonaws.com"
+      ],
+      "User-Agent": [
+          "Amazon Simple Notification Service Agent"
+      ],
+      "Via": [
+          "1.1 27eb501c8caff149895f88cac34554af.cloudfront.net (CloudFront)"
+      ],
+      "X-Amz-Cf-Id": [
+          "eAONsmbBoKejpk19SYoEao0Dfr3c7vOzy_OjNTWz3LImD-E2-tc9pw=="
+      ],
+      "x-amz-sns-message-id": [
+          "f3bddb99-6429-5f50-ab6c-83a14e40a466"
+      ],
+      "x-amz-sns-message-type": [
+          "Notification"
+      ],
+      "x-amz-sns-subscription-arn": [
+          "arn:aws:sns:us-east-1:702668273362:1591685891187-asm-event-publishing:c62f7ca9-f2bb-45c1-ad4c-2dfe61354341"
+      ],
+      "x-amz-sns-topic-arn": [
+          "arn:aws:sns:us-east-1:702668273362:1591685891187-asm-event-publishing"
+      ],
+      "X-Amzn-Trace-Id": [
+          "Root=1-5fbe2829-47de2d916587c71634700760"
+      ],
+      "X-Forwarded-For": [
+          "72.21.217.218, 70.132.60.72"
+      ],
+      "X-Forwarded-Port": [
+          "443"
+      ],
+      "X-Forwarded-Proto": [
+          "https"
+      ]
+  },
+  "queryStringParameters": null,
+  "multiValueQueryStringParameters": null,
+  "pathParameters": null,
+  "stageVariables": null,
+  "requestContext": {
+      "resourceId": "paay6a",
+      "resourcePath": "/tnvs-event-listener",
+      "httpMethod": "POST",
+      "extendedRequestId": "Wjs2fE-ZIAMF6Pg=",
+      "requestTime": "25/Nov/2020:09:47:21 +0000",
+      "path": "/Prod/tnvs-event-listener",
+      "accountId": "015042914573",
+      "protocol": "HTTP/1.1",
+      "stage": "Prod",
+      "domainPrefix": "r67qmv7v4c",
+      "requestTimeEpoch": 1606297641422,
+      "requestId": "ca3cfa9d-72f9-4bff-98dd-976c4a8e596c",
+      "identity": {
+          "cognitoIdentityPoolId": null,
+          "accountId": null,
+          "cognitoIdentityId": null,
+          "caller": null,
+          "sourceIp": "72.21.217.218",
+          "principalOrgId": null,
+          "accessKey": null,
+          "cognitoAuthenticationType": null,
+          "cognitoAuthenticationProvider": null,
+          "userArn": null,
+          "userAgent": "Amazon Simple Notification Service Agent",
+          "user": null
+      },
+      "domainName": "r67qmv7v4c.execute-api.us-east-1.amazonaws.com",
+      "apiId": "r67qmv7v4c"
+  },
+  "body": "{\n  \"Type\" : \"Notification\",\n  \"MessageId\" : \"f3bddb99-6429-5f50-ab6c-83a14e40a466\",\n  \"TopicArn\" : \"arn:aws:sns:us-east-1:702668273362:1591685891187-asm-event-publishing\",\n  \"Message\" : \"{\\\"id\\\":\\\"234607ae-3c24-412c-873e-b87dba2dba44\\\",\\\"createdAt\\\":1606288385990,\\\"createdBy\\\":\\\"81a2a847-7625-4f95-ba3e-9fc341e9e83c\\\",\\\"customerId\\\":\\\"1591685891187\\\",\\\"service\\\":\\\"asset\\\",\\\"module\\\":\\\"asset\\\",\\\"action\\\":\\\"update\\\",\\\"data\\\":{\\\"objectId\\\":\\\"77fc0d5a-120b-4fca-924f-779c9b0a96e6\\\",\\\"lastUpdatedEpoch\\\":1606297640096,\\\"capturedChanges\\\":{\\\"metadataDocument\\\":{\\\"request_status\\\":\\\"In Progress\\\"},\\\"lastUpdatedEpoch\\\":1606297640096},\\\"change\\\":[\\\"metadataDocument\\\"]}}\",\n  \"Timestamp\" : \"2020-11-25T09:47:21.375Z\",\n  \"SignatureVersion\" : \"1\",\n  \"Signature\" : \"cPBtkLz6z+NYuFrJpLkRmAM4GnLqi1UUFt1ClSBM2YYKl2JECOEcVSEGkjmNtU826Se8MH/cBzQAzO4OErQTbn0LQlC61IiNfv6ZKkH5b1qSAasainieVgsUzNDpNnaWtELvqjvcIdvEpoCAJkl/bF0r+rdtc5XtxZknxQKkuQcc6kp6HxZHKPMelOOAsMO6fnEzhseO722cxavzVA2SYsWedDRHg9rMcbwOAAoEeyL06L/ojefweW62PUsDWbF10cKMgr73jVYvbAU8nDUTsyQzj23fSimJWl5mRSQHXz8XW16YK1V/Mo/8eIAwTuAH3X+7MFxm6k03gUkE8feYHw==\",\n  \"SigningCertURL\" : \"https://sns.us-east-1.amazonaws.com/SimpleNotificationService-010a507c1833636cd94bdb98bd93083a.pem\",\n  \"UnsubscribeURL\" : \"https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:702668273362:1591685891187-asm-event-publishing:c62f7ca9-f2bb-45c1-ad4c-2dfe61354341\",\n  \"MessageAttributes\" : {\n    \"service\" : {\"Type\":\"String\",\"Value\":\"asset\"},\n    \"module\" : {\"Type\":\"String\",\"Value\":\"asset\"},\n    \"customerId\" : {\"Type\":\"String\",\"Value\":\"1591685891187\"},\n    \"action\" : {\"Type\":\"String\",\"Value\":\"update\"}\n  }\n}",
+  "isBase64Encoded": false
+}

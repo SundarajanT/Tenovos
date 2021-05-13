@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  tenovos-integ-reference
+
+  SAM Template for tenovos-integ-reference
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  TenovosEventListener:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: tenovos-integ-reference.handler
+      FunctionName: tnvs-integ-reference
+      Timeout: 75
+      Runtime: nodejs12.x
+      Role: _IAM_ROLE_
+      Environment:
+        Variables:
+          TNVS_ACCESS_KEY_ID: _TNVS_ACCESS_KEY_ID_
+          TNVS_SECRET_ACCESS_KEY: _TNVS_SECRET_ACCESS_KEY_
+          DOWNLOAD_REQUEST_ACTION_TEMPLATE_ID: '{{resolve:ssm:/config/download-request/download-request-action-template-id:1}}'
+      Events:
+        TenovosEventListenerApi:
+          Type: Api
+          Properties:
+            Path: /tnvs-integ-reference
+            Method: ANY

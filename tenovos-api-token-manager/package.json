@@ -1,0 +1,17 @@
+{
+  "name": "ctc-scene7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-config": "^1.4.0",
+    "aws-sdk": "^2.686.0",
+    "log-winston-aws-level": "^1.11.0",
+    "mime-types": "^2.1.27",
+    "request": "^2.88.2",
+    "winston": "^3.3.3",
+    "winston-cloudwatch": "^2.4.0"
+  }
+}

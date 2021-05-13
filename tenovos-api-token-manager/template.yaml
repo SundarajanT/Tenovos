@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  tenovos-api-token-manager
+
+  SAM Template for tenovos-api-token-manager
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  TenovosApiTokenManager:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: tenovos-api-token-manager.handler
+      FunctionName: tenovos-api-token-manager
+      Timeout: 75
+      Runtime: nodejs12.x
+      Policies:
+        - AdministratorAccess

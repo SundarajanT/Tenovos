@@ -1,0 +1,86 @@
+{
+  "tenovos-configurations": [
+    {
+      "configuration": "download-order-received",
+      "customerId": "1591685891187",
+      "data": {
+        "bcc": [
+          {
+            "name": "Ian Chesnut",
+            "email": "ian@tenovos.com"
+          }
+        ],
+        "velocity_template": {
+          "body": "<!DOCTYPE html><html><head><title></title></head><body> Dear #if($recipientName != '') $recipientName, #else User(s), #end<br><br> Your asset order has been received by the Pantry team and you can expect to hear from us shortly.<br><br>Have a good day!<br> <br><i>This email is an automated notification, which is unable to receive replies.<br> We are happy to help you with any questions or concerns you may have. Please contact us<br> directly 24/7 via customerservice@tenovos.io</i><br> <br></body></html>",
+          "subject": "Order #: #if($title && $title != '') $title #end Pantry Order Confirmation"
+        }
+      }
+    },
+    {
+      "configuration": "download-order-assigned",
+      "customerId": "1591685891187",
+      "data": {
+        "bcc": [
+          {
+            "name": "Ian Chesnut",
+            "email": "ian@tenovos.com"
+          }
+        ],
+        "velocity_template": {
+          "body": "<!DOCTYPE html><html><head><title></title></head><body> Dear #if($recipientName != '') $recipientName, #else User(s), #end<br><br>A download order has been assigned to you. Please log into <a href=\"https://pantry.enterprise.app.tenovos.io/#/requestDetail?id=$id\">Pantry</a> to address.<br><br>Have a good day!<br> <br><i>This email is an automated notification, which is unable to receive replies.<br> We are happy to help you with any questions or concerns you may have. Please contact us<br> directly 24/7 via customerservice@tenovos.io</i><br> <br></body></html>",
+          "subject": "Order #: #if($title && $title != '') $title #end Pantry Order Assigned to you"
+        }
+      }
+    },
+    {
+      "configuration": "download-order-cancelled",
+      "customerId": "1591685891187",
+      "data": {
+        "bcc": [
+          {
+            "name": "Ian Chesnut",
+            "email": "ian@tenovos.com"
+          }
+        ],
+        "velocity_template": {
+          "body": "<!DOCTYPE html><html><head><title></title></head><body> Dear #if($recipientName != '') $recipientName, #else User(s), #end<br><br> Your asset order has been cancelled with the following notes:<br><br>#if($userMessage != '') <i> $userMessage </i>#end <br><br>If you did not request this action, please contact markops-production@google.com for assistance. <br><br>Have a good day!<br> <br><i>This email is an automated notification, which is unable to receive replies.<br> We are happy to help you with any questions or concerns you may have. Please contact us<br> directly 24/7 via customerservice@tenovos.io</i><br> <br></body></html>",
+          "subject": "Order #: #if($title && $title != '') $title #end Pantry Order Cancelled"
+        }
+      }
+    },
+    {
+      "configuration": "download-order-completed",
+      "customerId": "1591685891187",
+      "data": {
+        "bcc": [
+          {
+            "name": "Ian Chesnut",
+            "email": "ian@tenovos.com"
+          }
+        ],
+        "velocity_template": {
+          "body": "<!DOCTYPE html><html><head><title></title></head><body> Dear #if($recipientName != '') $recipientName, #else User(s), #end<br><br> Your asset order has been approved by the Pantry team for the terms of use that you requested. Please be sure to check rights again with us if your intended use changes in any way. <br><br>Click <a href=\"$userMessage\">here</a> to download your assets. <br><br>Have a good day!<br> <br><i>This email is an automated notification, which is unable to receive replies.<br> We are happy to help you with any questions or concerns you may have. Please contact us<br> directly 24/7 via customerservice@tenovos.io</i><br> <br></body></html>",
+          "subject": "Order #: #if($title && $title != '') $title #end Pantry Order Approved"
+        }
+      }
+    }
+  ],
+  "customer-profile": {
+    "profileDocument": {
+      "velocityTemplate": {
+        "assetTransformationShare": {
+          "body": "<html><body>Dear User(s),<br><br>$sender.name has shared asset transformation(s) with you. #if($velocityTemplate.data.message && $velocityTemplate.data.message !=\"\") <br><br> $sender.name says:<br>$velocityTemplate.data.message<br> #end<br>#if($velocityTemplate.data.presignedURL && !$velocityTemplate.data.presignedURL.empty) <a href=\"$velocityTemplate.data.presignedURL\">Click here to view</a> #end <br><br>Have a good day!<br>Pantry Team<br><br><i>This email is an automated notification, which is unable to receive replies. <br />We are happy to help you with any questions or concerns you may have. Please contact us <br />directly 24/7 via markops-production@google.com</i><br><br></body></html>",
+          "subject": "Asset Transformations Shared With You"
+        },
+        "assetShare": {
+          "body": "<html><body> Dear #if($recipients.length == 1 && !$recipients[0].name.empty) $recipients[0].name, #else User(s), #end<br><br>$sender.name shared asset(s) with you in Pantry. #if($velocityTemplate.data.note != '') <br> Message from $sender.name:<br>$velocityTemplate.data.note<br> #end<br><a href=\"https://pantry-uat.app.tenovos.io/#/collection/$velocityTemplate.data.collectionId\">Click here to view</a><br><br>Have a good day!<br>Pantry Team<br><br><i>This email is an automated notification, which is unable to receive replies. <br />We are happy to help you with any questions or concerns you may have. Please contact us <br>directly 24/7 via markops-production@google.com</i><br><br></body></html>",
+          "subject": "Pantry Assets Shared with you"
+        },
+        "assetExpiryEmail": {
+          "body": "<html><body>Dear User(s),<br><br>#if($velocityTemplate.data.presignedURL && !$velocityTemplate.data.presignedURL.empty)Looks like you downloaded and possibly used this asset.<br><a href=\"$velocityTemplate.data.presignedURL\">Click here to view</a> <br><br>The rights for Google to use this asset will <b>expire in $velocityTemplate.data.expirationDays days</b> and it will need to be removed wherever it is in use externally. If you would like to extend the rights please use the asset link above and proceed with a Download Request in Pantry to initiate the process.#end<br><br>#if($velocityTemplate.data.message && !$velocityTemplate.data.message.empty) $velocityTemplate.data.message<br><br> #end Have a good day!<br>Pantry Team<br><br><i>This email is an automated notification, which is unable to receive replies. <br />We are happy to help you with any questions or concerns you may have. Please contact us <br />directly 24/7 via customerservice@tenovos.io</i><br><br></body></html>",
+          "subject": "Asset Expiration Report - $velocityTemplate.data.expirationDays days - #if($velocityTemplate.data.currentDate && ! $velocityTemplate.data.currentDate.empty)($velocityTemplate.data.currentDate) #end"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  cust-pantry-request-updated-handler
+
+  SAM Template for cust-pantry-request-updated-handler
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  CustPantryRequestUpdatedHandler:
+    DependsOn: CustPantryUpdateDownloadRequestProcessor
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: cust-pantry-request-updated-handler.handler
+      FunctionName: cust-pantry-request-updated-handler
+      Timeout: 75
+      Runtime: nodejs12.x
+      Policies:
+        - AdministratorAccess
+      Environment:
+        Variables:
+          TRANSFORM_API_KEY: '{{resolve:ssm:/config/download-request/transform-api-key:1}}'
+          SENDER_EMAIL: '{{resolve:ssm:/config/sender-email:1}}'
+      Events:
+        CustCtcSkuSQSEvent:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt CustPantryUpdateDownloadRequestProcessor.Arn
+            BatchSize: 10
+
+  CustPantryUpdateDownloadRequestProcessor:
+    Type: AWS::SQS::Queue
+    Properties: 
+      QueueName: cust-pantry-update-download-request-processor_SQS
+      VisibilityTimeout: 600
+      MessageRetentionPeriod: 3600
