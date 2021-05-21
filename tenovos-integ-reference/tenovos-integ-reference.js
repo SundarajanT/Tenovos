@@ -46,22 +46,6 @@ const lambdaHandler = async (apiEvent, context) => {
     // Set the customerId on the message.data
     message.data.customerId = customerId
 
-    // ************ Post to INTEG SQS ************
-    // Set SQS if keys are given .. otherwise the queue should be on the same aws account
-    if (apiEvent.sqsAcctKeys) sqs = new AWS.SQS(awsConfig(apiEvent.sqsAcctKeys))
-
-    // Determine the SQS queue to push the message
-    let messageToPost = message.data
-
-    console.info(`SQS Message Posted : ${sqsPostResp.MessageId}`)
-
-    return makeResponse(200,
-      JSON.stringify({
-        postedMessage: messageToPost,
-        postedMessageId: sqsPostResp.MessageId
-      })
-    )
-
   } catch (err) {
     console.error(`Problem in execution : ${err}`)
     return makeResponse(500, JSON.stringify({ error: err }))

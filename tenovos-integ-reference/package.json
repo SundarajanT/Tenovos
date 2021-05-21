@@ -1,0 +1,14 @@
+{
+  "name": "tenovos-event-listener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-config": "^1.4.0",
+    "aws-sdk": "^2.686.0",
+    "mime-types": "^2.1.27",
+    "slack-webhook": "^1.0.0"
+  }
+}
