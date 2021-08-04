@@ -8,7 +8,7 @@ const https = require('https');
 
 var SlackWebhook = require('slack-webhook');
  
-var slack = new SlackWebhook(`${process.env.SLACK_WEB_HOOK}`);
+var slack = new SlackWebhook(`${process.env.TNVS_REFERENCE_SLACK_WEB_HOOK}`);
 
 // Tenovos Acct Keys
 const tnvsAccessKeyId = process.env.TNVS_ACCESS_KEY_ID
@@ -28,7 +28,7 @@ const makeResponse = (statusCode, message) => {
 const lambdaHandler = async (apiEvent, context) => {
   console.info(`API EVENT: \n${JSON.stringify(apiEvent, null, 2)}`)
 
-  console.info(`${process.env.SLACK_WEB_HOOK}`)
+  console.info(`${process.env.TNVS_REFERENCE_SLACK_WEB_HOOK}`)
 
   slack.send('RECEIVED EVENT').then(function (res) {
     // succesful request
@@ -45,6 +45,12 @@ const lambdaHandler = async (apiEvent, context) => {
     console.info(`Object Id : ${objectId} .. Customer Id : ${customerId} ... Action : ${action}`)
     // Set the customerId on the message.data
     message.data.customerId = customerId
+
+    slack.send('test').then(function (res) {
+      // succesful request
+    }).catch(function (err) {
+      // handle request error
+    })
 
   } catch (err) {
     console.error(`Problem in execution : ${err}`)

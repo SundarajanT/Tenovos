@@ -1,20 +1,17 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  tenovos-integ-reference
-
-  SAM Template for tenovos-integ-reference
-
+  Simple sample to receive events from a Tenovos Platform SNS topic, to catch Tenovos events from a Tenovos Integration account
 Globals:
   Function:
     Timeout: 3
 
 Resources:
-  TenovosEventListener:
+  TenovosEventListenerReference:
     Type: AWS::Serverless::Function
     Properties:
       Handler: tenovos-integ-reference.handler
-      FunctionName: tnvs-integ-reference
+      FunctionName: tenovos-integ-reference-_INTEGRATOR_COMPANY_-_INTEGRATOR_INDIVIDUAL_INITIALS_
       Timeout: 75
       Runtime: nodejs12.x
       Role: _IAM_ROLE_
@@ -22,10 +19,10 @@ Resources:
         Variables:
           TNVS_ACCESS_KEY_ID: _TNVS_ACCESS_KEY_ID_
           TNVS_SECRET_ACCESS_KEY: _TNVS_SECRET_ACCESS_KEY_
-          DOWNLOAD_REQUEST_ACTION_TEMPLATE_ID: '{{resolve:ssm:/config/download-request/download-request-action-template-id:1}}'
+          TNVS_REFERENCE_SLACK_WEB_HOOK: _TNVS_REFERENCE_SLACK_WEB_HOOK_
       Events:
-        TenovosEventListenerApi:
+        TenovosEventListenerApiReference:
           Type: Api
           Properties:
-            Path: /tnvs-integ-reference
+            Path: /tenovos-integ-reference-_INTEGRATOR_COMPANY_-_INTEGRATOR_INDIVIDUAL_INITIALS_
             Method: ANY
