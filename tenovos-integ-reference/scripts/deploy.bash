@@ -90,8 +90,11 @@ sed -i '' "s/_IAM_ROLE_/$IAM_ROLE/g" "$pwdesc/template.yaml"
 sed -i '' "s/_INTEGRATOR_COMPANY_/$INTEGRATOR_COMPANY/g" "$pwdesc/template.yaml"
 sed -i '' "s/_INTEGRATOR_INDIVIDUAL_INITIALS_/$INTEGRATOR_INDIVIDUAL_INITIALS/g" "$pwdesc/template.yaml"
 sed -i '' "s~_TNVS_REFERENCE_SLACK_WEB_HOOK_~$TNVS_REFERENCE_SLACK_WEB_HOOK~g" "$pwdesc/template.yaml"
-
-
+sed -i '' "s~_TNVS_REST_API_KEY_~$TNVS_REST_API_KEY~g" "$pwdesc/template.yaml"
+sed -i '' "s~_TNVS_USER_POOL_ID_~$TNVS_USER_POOL_ID~g" "$pwdesc/template.yaml"
+sed -i '' "s~_TNVS_CLIENT_ID_~$TNVS_CLIENT_ID~g" "$pwdesc/template.yaml"
+sed -i '' "s~_TNVS_USERNAME_~$TNVS_USERNAME~g" "$pwdesc/template.yaml"
+sed -i '' "s~_TNVS_PASSWORD_~$TNVS_PASSWORD~g" "$pwdesc/template.yaml"
 
 read -p "About to deploy $STACK_NAME to $ENVIRONMENT continue (y/n)?" CHOICE
 if [ "$CHOICE" = "y" ]; then

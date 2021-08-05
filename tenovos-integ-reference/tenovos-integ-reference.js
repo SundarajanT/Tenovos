@@ -5,6 +5,7 @@
 const AWS = require('aws-sdk');
 let awsConfig = require('aws-config');
 const https = require('https');
+const tenovos = require('@tenovos/tenovos-cs-sdk');
 
 var SlackWebhook = require('slack-webhook');
  
@@ -44,13 +45,14 @@ const lambdaHandler = async (apiEvent, context) => {
     const { data: { objectId }, customerId, action } = message
     console.info(`Object Id : ${objectId} .. Customer Id : ${customerId} ... Action : ${action}`)
     // Set the customerId on the message.data
-    message.data.customerId = customerId
+    console.log(`sending message to slack`);
 
-    slack.send('test').then(function (res) {
-      // succesful request
+    await slack.send('test').then(function (res) {
+      console.log(`slack send successful ${res}`);
     }).catch(function (err) {
-      // handle request error
+      console.log(`slack send failed ${err}`);
     })
+    console.log(`message sent to slack`);
 
   } catch (err) {
     console.error(`Problem in execution : ${err}`)
