@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 display_usage() {
   echo "usage: $0 [stack-name] [integrator-company] [user-initials] [environment]"
   echo "example: $0 [tenovos-integ-reference] [acme] [ic] [dev-integ]"
@@ -84,17 +85,18 @@ IAM_ROLE=$(echo "$IAM_ROLE" | sed -e 's/\//\\\//g')
 TNVS_ACCESS_KEY_ID=$(echo "$TNVS_ACCESS_KEY_ID" | sed -e 's/\//\\\//g')
 TNVS_SECRET_ACCESS_KEY=$(echo "$TNVS_SECRET_ACCESS_KEY" | sed -e 's/\//\\\//g')
 
-sed -i '' "s/_TNVS_ACCESS_KEY_ID_/$TNVS_ACCESS_KEY_ID/g" "$pwdesc/template.yaml"
-sed -i '' "s/_TNVS_SECRET_ACCESS_KEY_/$TNVS_SECRET_ACCESS_KEY/g" "$pwdesc/template.yaml"
-sed -i '' "s/_IAM_ROLE_/$IAM_ROLE/g" "$pwdesc/template.yaml"
-sed -i '' "s/_INTEGRATOR_COMPANY_/$INTEGRATOR_COMPANY/g" "$pwdesc/template.yaml"
-sed -i '' "s/_INTEGRATOR_INDIVIDUAL_INITIALS_/$INTEGRATOR_INDIVIDUAL_INITIALS/g" "$pwdesc/template.yaml"
-sed -i '' "s~_TNVS_REFERENCE_SLACK_WEB_HOOK_~$TNVS_REFERENCE_SLACK_WEB_HOOK~g" "$pwdesc/template.yaml"
-sed -i '' "s~_TNVS_REST_API_KEY_~$TNVS_REST_API_KEY~g" "$pwdesc/template.yaml"
-sed -i '' "s~_TNVS_USER_POOL_ID_~$TNVS_USER_POOL_ID~g" "$pwdesc/template.yaml"
-sed -i '' "s~_TNVS_CLIENT_ID_~$TNVS_CLIENT_ID~g" "$pwdesc/template.yaml"
-sed -i '' "s~_TNVS_USERNAME_~$TNVS_USERNAME~g" "$pwdesc/template.yaml"
-sed -i '' "s~_TNVS_PASSWORD_~$TNVS_PASSWORD~g" "$pwdesc/template.yaml"
+#sed -i '' "s/_TNVS_ACCESS_KEY_ID_/$TNVS_ACCESS_KEY_ID/g" "template.yaml"
+#sed -i '' "s/_TNVS_SECRET_ACCESS_KEY_/$TNVS_SECRET_ACCESS_KEY/g" "$pwdesc/template.yaml"
+#sed -i '' "s/_IAM_ROLE_/$IAM_ROLE/g" "$pwdesc/template.yaml"
+#sed -i '' "s/_INTEGRATOR_COMPANY_/$INTEGRATOR_COMPANY/g" "$pwdesc/template.yaml"
+#sed -i '' "s/_INTEGRATOR_INDIVIDUAL_INITIALS_/$INTEGRATOR_INDIVIDUAL_INITIALS/g" "$pwdesc/template.yaml"
+#sed -i '' "s~_TNVS_REFERENCE_SLACK_WEB_HOOK_~$TNVS_REFERENCE_SLACK_WEB_HOOK~g" "$pwdesc/template.yaml"
+
+#sed -i '' "s~_TNVS_REST_API_KEY_~$TNVS_REST_API_KEY~g" "$pwdesc/template.yaml"
+#sed -i '' "s~_TNVS_USER_POOL_ID_~$TNVS_USER_POOL_ID~g" "$pwdesc/template.yaml"
+#sed -i '' "s~_TNVS_CLIENT_ID_~$TNVS_CLIENT_ID~g" "$pwdesc/template.yaml"
+#sed -i '' "s~_TNVS_USERNAME_~$TNVS_USERNAME~g" "$pwdesc/template.yaml"
+#sed -i '' "s~_TNVS_PASSWORD_~$TNVS_PASSWORD~g" "$pwdesc/template.yaml"
 
 read -p "About to deploy $STACK_NAME to $ENVIRONMENT continue (y/n)?" CHOICE
 if [ "$CHOICE" = "y" ]; then
@@ -103,11 +105,13 @@ else
   echo "Not continuing..."; exit 1;
 fi
 
+"C:/Program Files/Amazon/AWSSAMCLI/runtime/python.exe" -m samcli --version
+
 echo "Packaging..."
-sam package --template-file template.yaml --output-template-file serverless-output.yml --s3-bucket $DEPLOYMENT_S3_BUCKET --profile $ENVIRONMENT
+"C:/Program Files/Amazon/AWSSAMCLI/runtime/python.exe" -m samcli package --template-file template.yaml --output-template-file serverless-output.yml --s3-bucket $DEPLOYMENT_S3_BUCKET --profile $ENVIRONMENT
 
 echo "Deploying..."
-sam deploy --template-file serverless-output.yml --stack-name $STACK_NAME-$INTEGRATOR_COMPANY-$INTEGRATOR_INDIVIDUAL_INITIALS --profile $ENVIRONMENT --capabilities CAPABILITY_IAM --region us-east-1
+"C:/Program Files/Amazon/AWSSAMCLI/runtime/python.exe" -m samcli deploy --template-file serverless-output.yml --stack-name $STACK_NAME-$INTEGRATOR_COMPANY-$INTEGRATOR_INDIVIDUAL_INITIALS --profile $ENVIRONMENT --capabilities CAPABILITY_IAM --region us-east-1
 
 backup_file;
 
