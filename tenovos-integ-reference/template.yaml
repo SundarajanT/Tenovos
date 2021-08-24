@@ -11,15 +11,15 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: tenovos-integ-reference.handler
-      FunctionName: tenovos-integ-reference-_INTEGRATOR_COMPANY_-_INTEGRATOR_INDIVIDUAL_INITIALS_
+      FunctionName: tenovos-integ-reference-sify-kgx
       Timeout: 75
       Runtime: nodejs12.x
-      Role: _IAM_ROLE_
+      Role: arn:aws:iam::015042914573:role/functional_sify_dev_ingest_role
       Environment:
         Variables:
-          TNVS_ACCESS_KEY_ID: _TNVS_ACCESS_KEY_ID_
-          TNVS_SECRET_ACCESS_KEY: _TNVS_SECRET_ACCESS_KEY_
-          TNVS_REFERENCE_SLACK_WEB_HOOK: _TNVS_REFERENCE_SLACK_WEB_HOOK_
+          TNVS_ACCESS_KEY_ID: 
+          TNVS_SECRET_ACCESS_KEY: 
+          TNVS_REFERENCE_SLACK_WEB_HOOK: 
           TNVS_REST_API_KEY: _TNVS_REST_API_KEY_
           TNVS_USER_POOL_ID: _TNVS_USER_POOL_ID_
           TNVS_CLIENT_ID: _TNVS_CLIENT_ID_
@@ -29,5 +29,5 @@ Resources:
         TenovosEventListenerApiReference:
           Type: Api
           Properties:
-            Path: /tenovos-integ-reference-_INTEGRATOR_COMPANY_-_INTEGRATOR_INDIVIDUAL_INITIALS_
+            Path: /tenovos-integ-reference-sify-kgx
             Method: ANY

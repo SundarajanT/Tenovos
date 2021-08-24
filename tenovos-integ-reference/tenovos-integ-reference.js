@@ -5,7 +5,7 @@
 const AWS = require('aws-sdk');
 let awsConfig = require('aws-config');
 const https = require('https');
-const tenovos = require('@tenovos/tenovos-cs-sdk');
+//const tenovos = require('@tenovos/tenovos-cs-sdk');
 
 var SlackWebhook = require('slack-webhook');
  
